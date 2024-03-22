@@ -1,0 +1,257 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My First API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/contacts": {
+            "get": {
+                "tags": [
+                    "Contatos"
+                ],
+                "summary": "Lista todos os contatos da agenda",
+                "operationId": "0f9efb5609dbb039b35ecafb28e492a2",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Contatos"
+                ],
+                "summary": "Salva um contato na agenda",
+                "operationId": "a3b0baf957a16c1ed505f2e8985c254c",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "cpf": {
+                                        "type": "string"
+                                    },
+                                    "birthDate": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "phone": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Leonardo",
+                                    "email": "leonardo@gmail.com",
+                                    "cpf": "18157634209",
+                                    "birthDate": "2004-04-15",
+                                    "phones": [
+                                        {
+                                            "phone": "12345678"
+                                        },
+                                        {
+                                            "phone": "24566787"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        },
+        "/api/contacts/{id}": {
+            "put": {
+                "tags": [
+                    "Contatos"
+                ],
+                "summary": "Salva um contato na agenda",
+                "operationId": "554514967b71c75698b6cef012de4420",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id do contato",
+                        "schema": {
+                            "type": "numeric"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "Um valor inteiro",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "cpf": {
+                                        "type": "string"
+                                    },
+                                    "birthDate": {
+                                        "type": "string",
+                                        "format": "date"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Leonardo",
+                                    "email": "leonardo@gmail.com",
+                                    "cpf": "18157634209",
+                                    "birthDate": "2004-04-15"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Contatos"
+                ],
+                "summary": "Apaga um contatos da agenda",
+                "operationId": "3a78f2af1871a21a2b5a492134d72017",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do contato",
+                        "schema": {
+                            "type": "numeric"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "Um valor inteiro",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/phones/{id}": {
+            "put": {
+                "tags": [
+                    "Telefones"
+                ],
+                "summary": "altera um número de telefone",
+                "operationId": "9fb849fa264f18c989f2b1b876d6b4b0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id do telefone",
+                        "schema": {
+                            "type": "numeric"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "Um valor inteiro",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "phone": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "phone": "23625325"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Telefones"
+                ],
+                "summary": "Apaga um telefone do contato",
+                "operationId": "2a120a2b3860d9dfb99bca6a61e9b47a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do contato",
+                        "schema": {
+                            "type": "numeric"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "Um valor inteiro",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    }
+}
